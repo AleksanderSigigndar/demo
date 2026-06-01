@@ -1,0 +1,26 @@
+.register-card {
+  max-width: 550px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field-error {
+  color: #dc3545;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .auth-card {
+    padding: 24px;
+  }
+}
