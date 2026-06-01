@@ -25,7 +25,6 @@ const Dashboard = ({ user, userRole }) => {
     try {
       console.log('Загрузка заявок для пользователя:', user.uid);
       
-      // Проверяем, есть ли коллекция requests
       const requestsRef = collection(db, 'requests');
       const q = query(
         requestsRef,
@@ -46,7 +45,6 @@ const Dashboard = ({ user, userRole }) => {
       
       setRequests(userRequests);
       
-      // Загружаем отзывы
       const reviewsRef = collection(db, 'reviews');
       const reviewsQuery = query(reviewsRef, where('userId', '==', user.uid));
       const reviewsSnapshot = await getDocs(reviewsQuery);
@@ -113,9 +111,9 @@ const Dashboard = ({ user, userRole }) => {
 
   const getStatusText = (status) => {
     switch(status) {
-      case 'Новая': return '⏳ Новая';
-      case 'Идет обучение': return '📚 Идет обучение';
-      case 'Обучение завершено': return '✅ Обучение завершено';
+      case 'Новая': return 'Новая';
+      case 'Идет обучение': return 'Идет обучение';
+      case 'Обучение завершено': return 'Обучение завершено';
       default: return status || 'Новая';
     }
   };
@@ -127,7 +125,7 @@ const Dashboard = ({ user, userRole }) => {
   if (error) {
     return (
       <div className="error-state">
-        <div className="empty-icon">⚠️</div>
+        <div className="empty-icon"></div>
         <h3>Ошибка загрузки</h3>
         <p>{error}</p>
         <button className="btn-primary" onClick={loadUserData}>Повторить</button>
@@ -158,7 +156,7 @@ const Dashboard = ({ user, userRole }) => {
         <>
           {requests.length === 0 ? (
             <div className="empty-state">
-              <div className="empty-icon">📝</div>
+              <div className="empty-icon"></div>
               <h3>У вас пока нет заявок</h3>
               <p>Оставьте первую заявку на интересующий курс</p>
               <a href="/new-request" className="btn-primary">+ Создать заявку</a>
@@ -205,7 +203,7 @@ const Dashboard = ({ user, userRole }) => {
                       className="review-btn"
                       onClick={() => setShowReviewModal(request.id)}
                     >
-                      ✍️ Оставить отзыв
+                      Оставить отзыв
                     </button>
                   )}
 
@@ -225,7 +223,7 @@ const Dashboard = ({ user, userRole }) => {
       {activeTab === 'profile' && (
         <div className="profile-card">
           <div className="profile-header">
-            <div className="profile-avatar">👤</div>
+            <div className="profile-avatar"></div>
             <h2>{user?.email || 'Пользователь'}</h2>
             <span className={`role-badge ${userRole === 'admin' ? 'role-admin' : 'role-user'}`}>
               {userRole === 'admin' ? 'Администратор' : 'Пользователь'}

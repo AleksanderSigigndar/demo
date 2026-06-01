@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Slider.css';
+import img1 from '../../images/image1.jpeg';
+import img2 from '../../images/image2.jpeg';
+import img3 from '../../images/image3.jpeg';
+import img4 from '../../images/image4.jpeg';
 
-const defaultImages = [
-  'https://via.placeholder.com/800x400/007bff/ffffff?text=Курсы+Повышения+Квалификации',
-  'https://via.placeholder.com/800x400/0d47a1/ffffff?text=Профессиональная+Переподготовка',
-  'https://via.placeholder.com/800x400/28a745/ffffff?text=Охрана+Труда',
-  'https://via.placeholder.com/800x400/17a2b8/ffffff?text=Сертификация'
-];
+const defaultImages = [img1, img2, img3, img4];
 
 const Slider = ({ images = defaultImages }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

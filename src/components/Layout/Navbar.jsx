@@ -20,7 +20,6 @@ const Navbar = ({ user, userRole }) => {
     <nav className="navbar">
       <div className="container navbar-container">
         <Link to="/" className="logo">
-          <span className="logo-icon">🎓</span>
           <span className="logo-text">Учусь.РФ</span>
         </Link>
 

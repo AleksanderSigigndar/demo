@@ -12,7 +12,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Функция для получения email по логину из Firestore
   const getEmailByLogin = async (login) => {
     try {
       const usersRef = collection(db, 'users');
@@ -38,11 +37,9 @@ const Login = () => {
     try {
       let email = loginOrEmail;
       
-      // Проверяем, ввели ли email или логин
       const isEmail = loginOrEmail.includes('@');
       
       if (!isEmail) {
-        // Если ввели логин, ищем соответствующий email
         const foundEmail = await getEmailByLogin(loginOrEmail);
         if (!foundEmail) {
           setError('Пользователь с таким логином не найден');
@@ -52,10 +49,8 @@ const Login = () => {
         email = foundEmail;
       }
       
-      // Вход через Firebase Auth
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
-      // Получаем роль пользователя из Firestore
       const usersRef = collection(db, 'users');
       const q = query(usersRef, where('email', '==', email));
       const querySnapshot = await getDocs(q);
